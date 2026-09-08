@@ -12,7 +12,7 @@ interface Props {
 
 export function GameComplete({ score, total, difficulty, onPlayAgain }: Props) {
   const navigate = useNavigate()
-  const { t } = useLanguage()
+  const {  } = useLanguage()
 
   const ratio = score / total
   const emoji = ratio >= 1 ? '🏆' : ratio >= 0.8 ? '⭐' : ratio >= 0.6 ? '👏' : '💪'
