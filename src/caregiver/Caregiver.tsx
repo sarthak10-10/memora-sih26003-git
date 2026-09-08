@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useGameStats } from '../store/useGameStats';
 import { useReminders, reminderIcons } from '../reminders/useReminders';
 import { useLanguage } from '../store/useLanguage';
+import { AnimatedCounter } from '../components/AnimatedCounter'
+
 
 function Caregiver() {
   const navigate = useNavigate();
@@ -88,39 +90,19 @@ function Caregiver() {
           </div>
 
           <div className="grid grid-cols-3 gap-2 text-center">
-            <div className="bg-white rounded-xl p-3 shadow-sm">
-              <div
-                className="text-2xl font-bold text-[#3e644a]"
-                aria-label={`${totalSessions} sessions`}
-              >
-                {totalSessions}
-              </div>
-              <div className="text-xs text-[#424942] mt-1">{t.sessions}</div>
-            </div>
-            <div className="bg-white rounded-xl p-3 shadow-sm">
-              <div
-                className="text-2xl font-bold text-[#6b4400]"
-                aria-label={`Average recall: ${avgScore} percent`}
-              >
-                {avgScore}%
-              </div>
-              <div className="text-xs text-[#424942] mt-1">{t.avgRecall}</div>
-            </div>
-            <div className="bg-white rounded-xl p-3 shadow-sm">
-              <span
-                className="material-symbols-outlined text-[#3e644a] text-2xl"
-                aria-hidden="true"
-              >
-                emoji_events
-              </span>
-              <div
-                className="text-xs text-[#424942] mt-1"
-                aria-label={`Current level: ${bestDifficulty}`}
-              >
-                {t.level} {bestDifficulty}
-              </div>
-            </div>
-          </div>
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <AnimatedCounter value={totalSessions} className="text-2xl font-bold text-[#3e644a]" />
+    <div className="text-xs text-[#424942] mt-1">{t.sessions}</div>
+  </div>
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <AnimatedCounter value={avgScore} suffix="%" className="text-2xl font-bold text-[#6b4400]" />
+    <div className="text-xs text-[#424942] mt-1">{t.avgRecall}</div>
+  </div>
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <span className="material-symbols-outlined text-[#3e644a] text-2xl" aria-hidden="true">emoji_events</span>
+    <div className="text-xs text-[#424942] mt-1">{t.level} <AnimatedCounter value={bestDifficulty} /></div>
+  </div>
+</div>
 
           {totalSessions === 0 && (
             <p className="text-center text-[#424942] text-sm">
