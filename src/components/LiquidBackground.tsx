@@ -20,20 +20,20 @@ export function LiquidBackground() {
     window.addEventListener('resize', resize)
 
     const blobs = [
-      { x: 0.3, y: 0.3, r: 0.25, color: 'rgba(62,100,74,0.06)', speed: 0.0008 },
-      { x: 0.7, y: 0.6, r: 0.3, color: 'rgba(130,85,0,0.05)', speed: 0.0006 },
-      { x: 0.5, y: 0.8, r: 0.2, color: 'rgba(141,110,89,0.05)', speed: 0.001 },
-      { x: 0.2, y: 0.7, r: 0.22, color: 'rgba(194,237,203,0.08)', speed: 0.0007 },
-      { x: 0.8, y: 0.2, r: 0.18, color: 'rgba(255,193,102,0.06)', speed: 0.0009 },
+      { x: 0.3, y: 0.3, r: 0.35, color: 'rgba(62,100,74,0.04)', speed: 0.00015 },
+      { x: 0.7, y: 0.6, r: 0.4, color: 'rgba(130,85,0,0.03)', speed: 0.0001 },
+      { x: 0.5, y: 0.8, r: 0.3, color: 'rgba(141,110,89,0.03)', speed: 0.0002 },
+      { x: 0.2, y: 0.7, r: 0.32, color: 'rgba(194,237,203,0.05)', speed: 0.00012 },
+      { x: 0.8, y: 0.2, r: 0.28, color: 'rgba(255,193,102,0.04)', speed: 0.00018 },
     ]
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       blobs.forEach((blob, i) => {
-        const x = (blob.x + Math.sin(t * blob.speed * 1000 + i) * 0.15) * canvas.width
-        const y = (blob.y + Math.cos(t * blob.speed * 1000 + i * 2) * 0.12) * canvas.height
-        const r = blob.r * Math.min(canvas.width, canvas.height) * (1 + Math.sin(t * blob.speed * 500 + i) * 0.1)
+        const x = (blob.x + Math.sin(t * blob.speed * 1000 + i) * 0.08) * canvas.width
+        const y = (blob.y + Math.cos(t * blob.speed * 1000 + i * 2) * 0.06) * canvas.height
+        const r = blob.r * Math.min(canvas.width, canvas.height)
 
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, r)
         gradient.addColorStop(0, blob.color)
@@ -61,7 +61,6 @@ export function LiquidBackground() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
-      style={{ opacity: 1 }}
     />
   )
 }
